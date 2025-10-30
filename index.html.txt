@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>boo</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10rem;
+        font-family: sans-serif;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      body.show {
+        opacity: 1;
+      }
+
+      @keyframes flicker {
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+          opacity: 1;
+        }
+        20%, 22%, 24%, 55% {
+          opacity: 0;
+        }
+      }
+
+      .flicker {
+        animation: flicker 0.5s linear 3;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="boo">boo</div>
+
+    <script>
+      // Wait a short moment before showing the text
+      setTimeout(() => {
+        document.body.classList.add("show");
+        const boo = document.getElementById("boo");
+        boo.classList.add("flicker");
+
+        // Optionally: add a sound effect
+        const audio = new Audio("https://actions.google.com/sounds/v1/horror/scream.ogg");
+        audio.play().catch(() => {}); // just in case autoplay is blocked
+      }, 2000); // delay in milliseconds
+    </script>
+  </body>
+</html>
